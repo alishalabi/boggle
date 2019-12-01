@@ -14,14 +14,14 @@ class Combinations():
         self.dict = dict
         # Generate all neighbor coordinates for a given cell
         self.neighbor_coordinates = [
-            (-1, -1, "↖"),
-            (-1, 0, "↑"),
-            (-1, 1, "↗"),
-            (0, -1, "←"),
-            (0,  1, "→"),
-            (1, -1, "↙"),
-            (1,  0, "↓"),
-            (1,  1, "↘"),
+            (-1, -1),
+            (-1, 0),
+            (-1, 1),
+            (0, -1),
+            (0,  1),
+            (1, -1),
+            (1,  0),
+            (1,  1),
         ]
         # Maintain array of ALL combinations (of length "length")
         self.all_combinations = []
@@ -42,7 +42,7 @@ class Combinations():
             all_neighbors.append(new_row, new_column, neigh[2])
         return all_neighbors
 
-    def depth_first_search(self, row, columm, visited_array, current_combination, direction, max_length=3):
+    def depth_first_search(self, row, columm, visited_array, current_combination, max_length=3):
         # Exit scenario: Cell has been visited
         if (row, column) in visited_array:
             # print(f"Current combination: {current_combination}")
@@ -62,13 +62,13 @@ class Combinations():
         current_neighbors = get_neighbors(row, column)
         for neighbord in current_neighbors:
             depth_first_search(
-                neighbor[0], neighbor[1], visited_array[::], current_combination, direction + " " + neighbor[2], max_length=3)
+                neighbor[0], neighbor[1], visited_array[::], current_combination, max_length=3)
 
     def all_searches(self):
         for row_index in range(self.board[0]):
             for column_index in range(self.board):
                 depth_first_search(self, row_index, column_index, [
-                ], "", 'directions from ({},{})({}) go '.format(row_index, column_index, letter))
+                ], "")
         print(all_combinations)
 
 
