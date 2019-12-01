@@ -29,6 +29,9 @@ class Combinations():
         self.row_length = len(board)
 
     def get_neighbors(self, row_index, column_index):
+        """
+        For any given matrix cell, return list of all valid neighbors
+        """
         all_neighbors = []
         # Move row and column indexes of each neighbor
         for neighbor in self.neighbor_coordinates:
@@ -43,15 +46,16 @@ class Combinations():
         return all_neighbors
 
     def depth_first_search(self, row, columm, visited_array, current_combination, max_length=3):
+        """
+        Recursively search all available combinations for a single cell.
+        """
         # Exit scenario: Cell has been visited
         if (row, column) in visited_array:
-            # print(f"Current combination: {current_combination}")
-            self.all_combinations.append(current_combination)
+            # self.all_combinations.append(current_combination)
             return
         # Exit scenario: current word is longer than max length parameter
         if len(current_combination) > max_length:
-            # print(f"Current combination: {current_combination}")
-            self.all_combinations.append(current_combination)
+            # self.all_combinations.append(current_combination)
             return
 
         letter = board[row][column]
@@ -59,17 +63,22 @@ class Combinations():
 
         current_combination += letter
 
+        self.all_combinations.append(current_combination)
+
         current_neighbors = get_neighbors(row, column)
         for neighbord in current_neighbors:
             depth_first_search(
                 neighbor[0], neighbor[1], visited_array[::], current_combination, max_length=3)
 
     def all_searches(self):
-        for row_index in range(self.board[0]):
-            for column_index in range(self.board):
-                depth_first_search(self, row_index, column_index, [
+        """
+        Perform a depth first search for each cell in matrix
+        """
+        for row_index in range(self.row_length):
+            for column_index in range(self.column_length):
+                self.depth_first_search(self, row_index, column_index, [
                 ], "")
-        print(all_combinations)
+        print(self.all_combinations)
 
 
 combinations = Combinations()
