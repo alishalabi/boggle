@@ -39,18 +39,18 @@ class Combinations():
             new_column = column_index + neighbor[1]
 
             # Ensure that new row and column are both in matrix range
-            if (new_row >= row_length) or (new_column >= column_length) or (new_column < 0) or (new_row < 0):
+            if (new_row >= self.row_length) or (new_column >= self.column_length) or (new_column < 0) or (new_row < 0):
                 continue
             # Append neighbor to array
-            all_neighbors.append(new_row, new_column, neigh[2])
+            all_neighbors.append((new_row, new_column))  # neigh[2]
         return all_neighbors
 
-    def depth_first_search(self, row, columm, visited_array, current_combination, max_length=3):
+    def depth_first_search(self, row, column, visited_array, current_combination, max_length=3):
         """
-        Recursively search all available combinations for a single cell.
+        Recursively search all available combinations for a single cell
         """
         # Exit scenario: Cell has been visited
-        if (row, column) in visited_array:
+        if (row, column) in set(visited_array):
             # self.all_combinations.append(current_combination)
             return
         # Exit scenario: current word is longer than max length parameter
@@ -58,17 +58,19 @@ class Combinations():
             # self.all_combinations.append(current_combination)
             return
 
-        letter = board[row][column]
-        visited.append((row, column))
+        # Get new letter, append letter to visited array
+        letter = self.board[row][column]
+        visited_array.append((row, column))
 
+        # Add letter to combination, append combination to all combinations
         current_combination += letter
-
         self.all_combinations.append(current_combination)
 
-        current_neighbors = get_neighbors(row, column)
-        for neighbord in current_neighbors:
-            depth_first_search(
-                neighbor[0], neighbor[1], visited_array[::], current_combination, max_length=3)
+        # Recursively perform depth first search for each valid neighbor
+        current_neighbors = self.get_neighbors(row, column)
+        for neighbor in current_neighbors:
+            self.depth_first_search(
+                neighbor[0], neighbor[1], visited_array, current_combination, max_length=3)
 
     def all_searches(self):
         """
@@ -76,7 +78,7 @@ class Combinations():
         """
         for row_index in range(self.row_length):
             for column_index in range(self.column_length):
-                self.depth_first_search(self, row_index, column_index, [
+                self.depth_first_search(row_index, column_index, [
                 ], "")
         print(self.all_combinations)
 
