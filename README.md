@@ -28,12 +28,12 @@ Please make sure to update tests as appropriate.
 ## Milestones
 - [x] Generate new board instance with random letters
 - [] Improve board generation to be more realistic
-- [] Get all word combinations from 2d array (fixed length)
-- [] Get all word combinations from 2d array (variable length)
-- [] Implement prefix tree node
-- [] Implement prefix tree (using nodes)
-- [] Read from limited word dictionary
-- [] Create prefix tree with limited dictionary
+- [x] Get all word combinations from 2d array (fixed length)
+- [x] Get all word combinations from 2d array (variable length)
+- [x] Implement prefix tree node
+- [x] Implement prefix tree (using nodes)
+- [x] Read from limited word dictionary
+- [x] Create prefix tree with limited dictionary
 - [] Compare word combinations with prefix tree
 - [] Read from complete word dictionary
 - [] Create prefix tree with complete dictionary

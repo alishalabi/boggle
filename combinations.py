@@ -1,17 +1,9 @@
 # Combination code inspired by video blog: https://www.youtube.com/watch?v=aholjVetVDQ
 
 
-sample_board = [['C', 'J', 'Z', 'E'], ['V', 'A', 'X', 'B'],
-                ['X', 'N', 'T', 'U'], ['I', 'A', 'N', 'K']]
-
-sample_dict = {"CAT", "DOG", "BYTE", "TUBE", "CAN", "ANT",
-               "CAR", "TANK"}
-
-
 class Combinations():
-    def __init__(self, board=sample_board, dict=sample_dict):
+    def __init__(self, board):
         self.board = board
-        self.dict = dict
         # Generate all neighbor coordinates for a given cell
         self.neighbor_coordinates = [
             (-1, -1),
@@ -76,8 +68,5 @@ class Combinations():
             for column_index in range(self.column_length):
                 self.depth_first_search(row_index, column_index, [
                 ], "")
-        print(self.all_combinations)
-
-
-combinations = Combinations()
-combinations.all_searches()
+        # print(self.all_combinations)
+        return self.all_combinations
