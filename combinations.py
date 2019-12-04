@@ -45,16 +45,12 @@ class Combinations():
             all_neighbors.append((new_row, new_column))  # neigh[2]
         return all_neighbors
 
-    def depth_first_search(self, row, column, visited_array, current_combination, max_length=3):
+    def depth_first_search(self, row, column, visited_array, current_combination):
         """
-        Recursively search all available combinations for a single cell
+        Recursively search all available combinations from a single cell
         """
         # Exit scenario: Cell has been visited
         if (row, column) in set(visited_array):
-            # self.all_combinations.append(current_combination)
-            return
-        # Exit scenario: current word is longer than max length parameter
-        if len(current_combination) > max_length:
             # self.all_combinations.append(current_combination)
             return
 
@@ -70,7 +66,7 @@ class Combinations():
         current_neighbors = self.get_neighbors(row, column)
         for neighbor in current_neighbors:
             self.depth_first_search(
-                neighbor[0], neighbor[1], visited_array, current_combination, max_length=3)
+                neighbor[0], neighbor[1], visited_array, current_combination)
 
     def all_searches(self):
         """
