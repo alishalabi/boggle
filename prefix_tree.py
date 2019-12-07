@@ -176,7 +176,7 @@ def create_prefix_tree(strings):
     print(f'matches? {matches}')
 
 
-if __name__ == '__main__':
+def main():
     # Create a dictionary of tongue-twisters with similar words to test with
     tongue_twisters = {
         'Seashells': 'Shelly sells seashells by the sea shore'.split(),
@@ -189,3 +189,7 @@ if __name__ == '__main__':
         print('\n' + '=' * 80 + '\n')
         print(f'{name} tongue-twister:')
         create_prefix_tree(strings)
+
+
+if __name__ == '__main__':
+    main()
