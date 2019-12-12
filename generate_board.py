@@ -8,7 +8,7 @@ def generate_board(size=4):
               for i in range(size)]
              for j in range(size)]
     return board
-    return [['h', 'b', 'w', 'o'],
-            ['t', 'g', 'i', 'c'],
-            ['w', 'h', 'c', 'm'],
-            ['b', 'w', 's', 'u']]
+    # return [['h', 'b', 'w', 'o'],
+    #         ['t', 'g', 'i', 'c'],
+    #         ['w', 'h', 'c', 'm'],
+    #         ['b', 'w', 's', 'u']]
